@@ -1,4 +1,4 @@
-import { Post } from "./types";
+import { Post } from "../src/components/types";
 
 export const posts: Post[] = [
     {
@@ -12,3 +12,5 @@ export const posts: Post[] = [
         content: "This is the content of the second post."
     }
 ];
+
+
