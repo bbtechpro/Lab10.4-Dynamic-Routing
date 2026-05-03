@@ -9,6 +9,7 @@ export function useCustomState<T>(initialValue: T): UseStateType<T> {
 
 export interface Post {
     id: number;
+    slug: string;
     title: string;
     content: string;
 }
