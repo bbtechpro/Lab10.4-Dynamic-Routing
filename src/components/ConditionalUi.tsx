@@ -1,20 +1,31 @@
-import { useAuth } from "./AuthContext";
-export const Navbar = () => {
-  const { user, logout } = useAuth();
+import { Link } from 'react-router-dom';
+import { useAuth } from './useAuth';
+
+export function Navbar() {
+  const { isAuthenticated, logout } = useAuth();
 
   return (
-    <nav>
-      <a href="/">Home</a>
-      {user ? (
+    <header
+      style={{
+        display: 'flex',
+        gap: '1rem',
+        alignItems: 'center',
+        padding: '0.75rem 1.5rem',
+        borderBottom: '1px solid #ccc',
+      }}
+    >
+      <Link to="/">Home</Link>
+      <Link to="/blog">Blog</Link>
+      {isAuthenticated ? (
         <>
-          <span>Welcome, {user.name}</span>
-          <button onClick={logout}>Log Out</button>
+          <Link to="/admin">Admin</Link>
+          <button type="button" onClick={logout}>
+            Log Out
+          </button>
         </>
       ) : (
-        <a href="/login">Login</a>
+        <Link to="/login">Log In</Link>
       )}
-    </nav>
+    </header>
   );
-};
-
-
+}
